@@ -297,19 +297,9 @@ void DOS_Shell::Run(void) {
 	}
 	/* Start a normal shell and check for a first command init */
 	if (cmd->FindString("/INIT",line,true)) {
-		WriteOut(MSG_Get("SHELL_STARTUP_BEGIN"),VERSION);
-#if C_DEBUG
-		WriteOut(MSG_Get("SHELL_STARTUP_DEBUG"));
-#endif
-		if (machine == MCH_CGA) WriteOut(MSG_Get("SHELL_STARTUP_CGA"));
-		if (machine == MCH_HERC) WriteOut(MSG_Get("SHELL_STARTUP_HERC"));
-		WriteOut(MSG_Get("SHELL_STARTUP_END"));
-
 		strcpy(input_line,line.c_str());
 		line.erase();
 		ParseLine(input_line);
-	} else {
-		WriteOut(MSG_Get("SHELL_STARTUP_SUB"),VERSION);	
 	}
 	do {
 		if (bf){
